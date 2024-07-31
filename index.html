@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mensagem Especial</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            background-image: url('https://img.freepik.com/vetores-premium/plano-de-fundo-romantico-de-coracoes-caindo-conceito-de-dia-dos-namorados_185757-302.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            overflow: hidden;
+            animation: bgAnimation 10s infinite alternate;
+        }
+
+        @keyframes bgAnimation {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 100% 50%; }
+        }
+
+        .mensagem {
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            max-width: 500px;
+            width: 100%;
+            font-size: 22px;
+            opacity: 0;
+            animation: fadeIn 2s forwards;
+        }
+
+        @keyframes fadeIn {
+            0% { opacity: 0; transform: translateY(-20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        .mensagem h1 {
+            margin-top: 0;
+            color: #333;
+            font-size: 2em;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .mensagem p {
+            color: #666;
+            font-size: 1.2em;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+        }
+
+        .data-hora {
+            margin-top: 20px;
+            font-size: 18px;
+            color: #555;
+            opacity: 0;
+            animation: fadeIn 2s 1s forwards;
+        }
+
+        @keyframes fadeIn {
+            0% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+    <div class="mensagem" id="mensagem">
+        <h1>Olá, Meu Amor!</h1>
+        <p id="texto-mensagem">Espero que você esteja tendo um dia maravilhoso. Lembre-se de que você é muito especial para mim e eu te amo muito!</p>
+        <div class="data-hora" id="data-hora">
+            <!-- A data e hora serão exibidas aqui -->
+        </div>
+    </div>
+
+    <script>
+        const mensagens = [
+            "Espero que você esteja tendo um dia maravilhoso. Lembre-se de que você é muito especial para mim e eu te amo muito!",
+            "Você é a luz da minha vida. Tenha um dia incrível!",
+            "Cada momento com você é uma bênção. Te amo muito!",
+            "Você faz meu coração bater mais forte. Tenha um ótimo dia!",
+            "Estou pensando em você e sorrindo. Te amo mais do que palavras podem dizer!"
+        ];
+
+        function exibirMensagemAleatoria() {
+            const indiceAleatorio = Math.floor(Math.random() * mensagens.length);
+            document.getElementById('texto-mensagem').textContent = mensagens[indiceAleatorio];
+        }
+
+        function exibirDataHora() {
+            const dataHora = new Date();
+            const dataFormatada = dataHora.toLocaleDateString('pt-BR', {
+                weekday: 'long', 
+                year: 'numeric', 
+                month: 'long', 
+                day: 'numeric'
+            });
+            const horaFormatada = dataHora.toLocaleTimeString('pt-BR', {
+                hour: '2-digit', 
+                minute: '2-digit', 
+                second: '2-digit'
+            });
+            document.getElementById('data-hora').textContent = `Data e Hora: ${dataFormatada} ${horaFormatada}`;
+        }
+
+        window.onload = function() {
+            exibirMensagemAleatoria();
+            exibirDataHora();
+        }
+    </script>
+</body>
+</html>
